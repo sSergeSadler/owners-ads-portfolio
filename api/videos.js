@@ -58,8 +58,8 @@ module.exports = async (req, res) => {
         .sort((a, b) => a[0].localeCompare(b[0], "fr"));
       if (v.length) months.push({ ...when, v });
     }));
-    // Mis en cache 5 minutes par Vercel : une vidéo déposée dans Drive apparaît en quelques minutes.
-    res.setHeader("cache-control", "public, s-maxage=300, stale-while-revalidate=86400");
+    // Mis en cache 15 secondes par Vercel : le Drive est relu au plus 4 fois par minute, quel que soit le nombre de visiteurs.
+    res.setHeader("cache-control", "public, max-age=0, s-maxage=15, stale-while-revalidate=15");
     res.status(200).end(JSON.stringify({ months, configured: true }));
   } catch (e) {
     res.status(502).end(JSON.stringify({ error: String(e.message || e) }));

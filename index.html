@@ -250,6 +250,9 @@ function loadDrive(){
     if(added){paintTop();render($("#q").value);}
   }).catch(()=>{});
 }
+// Pendant que la page est ouverte, le Drive est revérifié toutes les 30 secondes.
+setInterval(()=>{if(!document.hidden)loadDrive();},30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)loadDrive();});
 </script>
 </body>
 </html>
