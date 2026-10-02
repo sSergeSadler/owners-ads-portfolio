@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Owners Ads · Portfolio vidéos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Concept : une salle de sport à la craie. Béton clair, noir de fonte, un seul bleu "disque de barre".
+   Une seule audace : le titre en capitales condensées. Tout le reste reste calme.
+   Mise en page : barre de marque, grand titre, chiffres, rythme de production, puis les vidéos mois par mois. */
+:root{
+  --bg:#e8e9eb; --surface:#f6f6f7; --ink:#101216; --muted:#565c66; --line:#cdd0d6; --accent:#2b4eff; --accent-ink:#ffffff; --chip:#dcdee2; --bar:#101216;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0f14;--surface:#141922;--ink:#eceef2;--muted:#98a0ad;--line:#252c37;--accent:#7790ff;--accent-ink:#0c0f14;--chip:#1b212b;--bar:#eceef2;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c0f14;--surface:#141922;--ink:#eceef2;--muted:#98a0ad;--line:#252c37;--accent:#7790ff;--accent-ink:#0c0f14;--chip:#1b212b;--bar:#eceef2;color-scheme:dark}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin-inline:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Barre de marque */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:22px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.mark{width:24px;height:24px;border-radius:50%;border:7px solid var(--accent);flex:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:12px 18px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.1);background:var(--accent);color:var(--accent-ink)}
+.btn.sm{padding:8px 12px;font-size:12px;border-radius:6px;border-color:var(--line);background:var(--chip)}
+.btn.sm:hover{border-color:var(--accent);background:var(--chip);color:var(--ink)}
+.btn[disabled]{opacity:.6;cursor:default}
+
+/* Accueil */
+.hero{padding-block:clamp(28px,6vw,72px) 36px;display:flex;flex-direction:column;gap:22px}
+.eyebrow{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,11.5vw,132px);line-height:.97;letter-spacing:-.005em;overflow-wrap:anywhere}
+h1 span,h1 em{display:block}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{margin:0;max-width:58ch;font-size:clamp(17px,2.2vw,20px);color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0;margin:18px 0 0;padding:0;border-top:2px solid var(--ink)}
+.stats div{padding:16px 16px 4px 0;border-bottom:1px solid var(--line)}
+.stats dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stats dd{margin:2px 0 0;font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,52px);line-height:1.05;font-variant-numeric:tabular-nums}
+.stats dd small{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted);letter-spacing:0;margin-left:6px;text-transform:none}
+
+/* Rythme de production */
+.rhythm{padding-block:8px 44px}
+.rh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:14px}
+.rh h2{margin:0;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.06em;text-transform:uppercase}
+.rh span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bars{display:flex;align-items:stretch;gap:clamp(3px,1vw,10px);height:210px;padding:14px 12px 10px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+a.bar{flex:1;min-width:0;display:flex;flex-direction:column;text-decoration:none;color:var(--muted)}
+.bt{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;min-height:0}
+.bc{display:block;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);padding-bottom:4px;font-variant-numeric:tabular-nums}
+.bf{display:block;height:var(--h);background:var(--bar);opacity:.9;border-radius:3px 3px 0 0;transform-origin:bottom}
+a.bar.new .bf{background:var(--accent);opacity:1}
+a.bar:hover .bf,a.bar:focus-visible .bf{background:var(--accent);opacity:1}
+a.bar:hover .bc{color:var(--ink)}
+.bl{display:block;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:6px;line-height:1.1;min-height:28px}
+.bl .l1{display:none}
+.bl em{display:block;font-style:normal;font-size:9px;opacity:.75;min-height:11px}
+@media (max-width:640px){.bars{height:190px;padding-inline:8px}.bl .l3{display:none}.bl .l1{display:inline}.bc{font-size:9px}}
+@media (max-width:430px){.bc{display:none}}
+@media (prefers-reduced-motion:no-preference){
+  .bf{animation:grow .8s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i)*35ms)}
+  @keyframes grow{from{transform:scaleY(.04)}}
+  .btn,.chip{transition:background .15s,border-color .15s,color .15s}
+}
+
+/* Recherche et mois */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-block:1px solid var(--line);margin-inline:-16px;padding:12px 16px}
+.rail-in{max-width:1040px;margin-inline:auto;display:flex;flex-direction:column;gap:10px}
+.search{width:100%;font:inherit;font-size:16px;padding:13px 16px;border:1.5px solid var(--ink);border-radius:999px;background:var(--surface);color:var(--ink)}
+.search::placeholder{color:var(--muted)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.chip{flex:none;font-family:var(--mono);font-size:12px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--ink);text-decoration:none;white-space:nowrap}
+.chip:hover{border-color:var(--accent)}
+.chip small{color:var(--muted);margin-left:5px;font-size:11px}
+main{padding-block:8px 72px}
+section.month{padding-top:48px;scroll-margin-top:140px}
+.mh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.mh h2{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(38px,7vw,68px);line-height:.95}
+.mh h2 span{font-family:var(--mono);font-weight:500;font-size:14px;color:var(--accent);margin-left:12px;letter-spacing:.04em;vertical-align:middle}
+.mh .n{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.08em}
+.rows{display:grid;grid-template-columns:1fr;column-gap:44px}
+@media (min-width:860px){.rows{grid-template-columns:1fr 1fr}}
+.rw{display:flex;align-items:center;border-bottom:1px solid var(--line)}
+a.row{flex:1;min-width:0;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 4px;text-decoration:none}
+.rw:hover{background:var(--surface)}
+.idx{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.nm{font-weight:500;overflow-wrap:anywhere}
+.go{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);font-size:11px;color:var(--ink)}
+.rw:hover .go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.empty{padding:56px 0;color:var(--muted);text-align:center}
+
+/* Pied de page */
+.foot{border-top:2px solid var(--ink);padding-block:28px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;color:var(--muted);font-size:14px}
+.foot .brand{color:var(--ink);font-size:20px}
+.foot .mark{width:20px;height:20px;border-width:6px}
+.foot a.js-contact{color:var(--ink);font-weight:600}
+
+/* Outils du propriétaire (version en ligne uniquement) */
+.adminbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-block:12px;border-bottom:1px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.adminbody{display:flex;flex-direction:column;gap:14px;padding-block:18px;border-bottom:1px dashed var(--line)}
+.adminbody h3{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.adminbody label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.adminbody em{font-style:normal;font-family:var(--mono);font-size:12px}
+.fields{display:flex;flex-wrap:wrap;gap:12px}
+.fields label{flex:1 1 160px}
+.fld{font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:100%}
+textarea.fld{font-family:var(--mono);font-size:13px;resize:vertical;min-height:120px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.hint{margin:0;font-size:13px;color:var(--muted);max-width:70ch}
+.del{flex:none;font-family:var(--mono);font-size:11px;margin-left:6px;padding:6px 10px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.del.armed{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+@media (max-width:480px){.top{padding-block:16px}.btn{padding:11px 15px}}
+</style>
+</head>
+<body>
+<div id="app">
+
+<div class="wrap">
+  <nav class="top" aria-label="Navigation principale">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span data-site="name">Owners Ads</span></a>
+    <a class="btn js-contact" href="#" target="_blank" rel="noopener" hidden>Me contacter</a>
+  </nav>
+  <header class="hero" id="top">
+    <p class="eyebrow" data-site="tagline">Studio vidéo pour salles de CrossFit et de fitness</p>
+    <h1><span>Vos publicités,</span><em>mois après mois.</em></h1>
+    <p class="lead">Toutes les vidéos réalisées pour les salles partenaires, classées par mois de livraison. Recherchez une salle ou une campagne, puis ouvrez la vidéo en un clic.</p>
+    <div class="cta">
+      <a class="btn primary" href="#videos">Voir les vidéos ↓</a>
+      <a class="btn js-contact" href="#" target="_blank" rel="noopener" hidden>Me contacter</a>
+    </div>
+    <dl class="stats">
+      <div><dt>Vidéos livrées</dt><dd id="stTotal" data-dyn>0</dd></div>
+      <div><dt>Mois d'activité</dt><dd id="stMonths" data-dyn>0</dd></div>
+      <div><dt>Moyenne</dt><dd><span id="stAvg" data-dyn>0</span><small>par mois</small></dd></div>
+      <div><dt>Meilleur mois</dt><dd><span id="stMax" data-dyn>0</span><small id="stMaxL" data-dyn></small></dd></div>
+    </dl>
+  </header>
+  <section class="rhythm" aria-labelledby="rt">
+    <div class="rh"><h2 id="rt">Rythme de production</h2><span>Vidéos livrées par mois · cliquez sur une barre</span></div>
+    <div class="bars" id="bars" data-dyn></div>
+  </section>
+</div>
+
+<div class="rail" id="videos"><div class="rail-in">
+  <input id="q" class="search" type="search" placeholder="Rechercher : Hope, Rentrée, Hyrox…" autocomplete="off" aria-label="Rechercher une vidéo">
+  <nav class="chips" id="chips" aria-label="Mois" data-dyn></nav>
+</div></div>
+
+<div class="wrap">
+  <main id="main" data-dyn></main>
+  <footer class="foot">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span data-site="name">Owners Ads</span></a>
+    <span id="lastDel" data-dyn></span>
+    <a class="js-contact" href="#" target="_blank" rel="noopener" hidden>Me contacter</a>
+  </footer>
+</div>
+</div>
+
+<script>
+var MONTHS=[], SITE={}, editMode=false;
+const BASE="https://drive.google.com/file/d/";
+const MN=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+const M3=["Jan","Fév","Mar","Avr","Mai","Juin","Juil","Août","Sep","Oct","Nov","Déc"];
+const M1=["J","F","M","A","M","J","J","A","S","O","N","D"];
+const linkFor=r=>/^https?:/i.test(r)?r:BASE+r+"/view";
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const key=m=>m.y*12+m.m;
+const mid=m=>"m-"+m.y+"-"+m.m;
+const byRecent=()=>[...MONTHS].sort((a,b)=>key(b)-key(a));
+
+function applySite(S){
+  S=S||{};
+  document.querySelectorAll('[data-site="name"]').forEach(e=>{if(S.name)e.textContent=S.name;});
+  document.querySelectorAll('[data-site="tagline"]').forEach(e=>{if(S.tagline)e.textContent=S.tagline;});
+  document.querySelectorAll(".js-contact").forEach(a=>{
+    if(S.contactUrl){a.href=S.contactUrl;a.hidden=false;if(a.classList.contains("btn"))a.textContent=S.contactLabel||"Me contacter";else a.textContent=S.contactLabel||"Me contacter";}
+    else a.hidden=true;
+  });
+  if(S.name) document.title=S.name+" · Portfolio vidéos";
+}
+function paintTop(){
+  const rec=byRecent(), asc=[...rec].reverse();
+  const total=rec.reduce((a,m)=>a+m.v.length,0);
+  $("#stTotal").textContent=total; $("#stMonths").textContent=rec.length;
+  $("#stAvg").textContent=rec.length?Math.round(total/rec.length):0;
+  let best=rec[0]; rec.forEach(m=>{if(m.v.length>best.v.length)best=m;});
+  $("#stMax").textContent=best?best.v.length:0; $("#stMaxL").textContent=best?M3[best.m-1]+" "+best.y:"";
+  const max=Math.max(1,...rec.map(m=>m.v.length));
+  $("#bars").innerHTML=asc.map((m,i)=>{
+    const yr=(i===0||m.m===1)?m.y:"";
+    return `<a class="bar${i===asc.length-1?" new":""}" href="#${mid(m)}" style="--h:${Math.max(3,Math.round(m.v.length/max*100))}%;--i:${i}" title="${MN[m.m-1]} ${m.y} : ${m.v.length} vidéo${m.v.length>1?"s":""}" aria-label="${MN[m.m-1]} ${m.y}, ${m.v.length} vidéos"><span class="bt"><b class="bc">${m.v.length}</b><i class="bf"></i></span><span class="bl"><span class="l3">${M3[m.m-1]}</span><span class="l1">${M1[m.m-1]}</span><em>${yr}</em></span></a>`;
+  }).join("");
+  $("#chips").innerHTML=rec.map(m=>`<a class="chip" href="#${mid(m)}">${M3[m.m-1]} ${String(m.y).slice(2)}<small>${m.v.length}</small></a>`).join("");
+  $("#lastDel").textContent=rec.length?"Dernière livraison : "+MN[rec[0].m-1]+" "+rec[0].y:"";
+}
+function render(q){
+  q=(q||"").trim().toLowerCase();
+  const html=byRecent().map(m=>{
+    const label=(MN[m.m-1]+" "+m.y).toLowerCase();
+    const rows=m.v.map((x,i)=>({n:x[0],r:x[1],i})).filter(r=>!q||r.n.toLowerCase().includes(q)||label.includes(q));
+    if(!rows.length) return "";
+    return `<section class="month" id="${mid(m)}"><div class="mh"><h2>${MN[m.m-1]}<span>${m.y}</span></h2><div class="n">${rows.length} vidéo${rows.length>1?"s":""}</div></div><div class="rows">`+
+      rows.map(r=>`<div class="rw"><a class="row" href="${esc(linkFor(r.r))}" target="_blank" rel="noopener"><span class="idx">${pad(r.i+1)}</span><span class="nm">${esc(r.n)}</span><span class="go" aria-hidden="true">▶</span></a>${editMode?`<button class="del" type="button" data-y="${m.y}" data-m="${m.m}" data-i="${r.i}">Supprimer</button>`:""}</div>`).join("")+`</div></section>`;
+  }).join("");
+  $("#main").innerHTML=html||`<div class="empty">Aucune vidéo ne correspond à « ${esc(q)} ».</div>`;
+}
+$("#q").addEventListener("input",e=>render(e.target.value));
+function initPage(S){
+  applySite(S); paintTop(); render("");
+  if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView();}
+}
+
+// videos.js est rechargé à chaque visite : une mise à jour est visible tout de suite.
+(function(){
+  var s=document.createElement("script");
+  s.src="videos.js?v="+Date.now();
+  s.onload=function(){MONTHS=window.VIDEOS||[];SITE=window.SITE||{};initPage(SITE);};
+  s.onerror=function(){$("#main").innerHTML='<div class="empty">Le fichier videos.js est introuvable. Vérifiez qu\'il est dans le même dossier que cette page.</div>';};
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
