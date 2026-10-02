@@ -229,10 +229,27 @@ function initPage(S){
 (function(){
   var s=document.createElement("script");
   s.src="videos.js?v="+Date.now();
-  s.onload=function(){MONTHS=window.VIDEOS||[];SITE=window.SITE||{};initPage(SITE);};
-  s.onerror=function(){$("#main").innerHTML='<div class="empty">Le fichier videos.js est introuvable. Vérifiez qu\'il est dans le même dossier que cette page.</div>';};
+  s.onload=function(){MONTHS=window.VIDEOS||[];SITE=window.SITE||{};initPage(SITE);loadDrive();};
+  s.onerror=function(){$("#main").innerHTML='<div class="empty">Le fichier videos.js est introuvable. Vérifiez qu\'il est dans le même dossier que cette page.</div>';loadDrive();};
   document.head.appendChild(s);
 })();
+
+// Ajoute les vidéos déposées dans le dossier Google Drive (sous-dossier par mois), sans doublon avec videos.js.
+function loadDrive(){
+  fetch("api/videos").then(r=>r.ok?r.json():null).then(d=>{
+    if(!d||!d.months||!d.months.length) return;
+    const seen=new Set(); MONTHS.forEach(m=>m.v.forEach(x=>seen.add(x[1])));
+    let added=0;
+    d.months.forEach(dm=>{
+      let t=MONTHS.find(m=>m.y===dm.y&&m.m===dm.m);
+      const names=new Set((t?t.v:[]).map(x=>x[0].trim().toLowerCase()));
+      const fresh=dm.v.filter(x=>!seen.has(x[1])&&!names.has(x[0].trim().toLowerCase())); if(!fresh.length) return;
+      if(!t){t={y:dm.y,m:dm.m,v:[]};MONTHS.push(t);}
+      fresh.forEach(x=>{t.v.push(x);seen.add(x[1]);}); added+=fresh.length;
+    });
+    if(added){paintTop();render($("#q").value);}
+  }).catch(()=>{});
+}
 </script>
 </body>
 </html>
